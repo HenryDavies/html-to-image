@@ -105,7 +105,7 @@ export async function toSvg(
     .then((clonedNode) => applyStyleWithOptions(clonedNode, options))
     .then((clonedNode) => {
       console.log(clonedNode);
-      return createSvgDataURL(clonedNode, width, height)
+      return createSvgDataURL(clonedNode, getImageSize(domNode, options).width, getImageSize(domNode, options).height)
     })
 }
 
