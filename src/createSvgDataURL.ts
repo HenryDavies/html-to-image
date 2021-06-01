@@ -20,6 +20,8 @@ export function createSvgDataURL(
 
   svg.appendChild(foreignObject)
   foreignObject.appendChild(clonedNode)
+  console.log('SVG');
+  console.log(svg);
 
   return svgToDataURL(svg)
 }
