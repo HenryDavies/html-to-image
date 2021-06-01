@@ -3,7 +3,7 @@ import { createImage, toArray } from './util'
 
 async function cloneSingleNode(
   node: HTMLCanvasElement | SVGElement | HTMLElement,
-  isRoot?: boolean;
+  isRoot?: boolean,
 ): Promise<HTMLElement> {
   if (node instanceof HTMLCanvasElement) {
     const dataURL = node.toDataURL()
