@@ -97,8 +97,6 @@ export async function toSvg(
   domNode: HTMLElement,
   options: Options = {},
 ): Promise<string> {
-  const { width, height } = getImageSize(domNode, options)
-
   return cloneNode(domNode, options.filter, true)
     .then((clonedNode) => embedWebFonts(clonedNode!, options))
     .then((clonedNode) => embedImages(clonedNode, options))
