@@ -3,6 +3,7 @@ import { createImage, toArray } from './util'
 
 async function cloneSingleNode(
   node: HTMLCanvasElement | SVGElement | HTMLElement,
+  isRoot?: boolean;
 ): Promise<HTMLElement> {
   if (node instanceof HTMLCanvasElement) {
     const dataURL = node.toDataURL()
@@ -18,8 +19,13 @@ async function cloneSingleNode(
   //     .then((svg) => svgToDataURL(svg))
   //     .then(createImage)
   // }
+    
+  const clonedNode = node.cloneNode(false) as HTMLElement;
+  if (isRoot) {
+    clonedNode.style.height = 'unset';
+  }
 
-  return Promise.resolve(node.cloneNode(false) as HTMLElement)
+  return Promise.resolve(clonedNode)
 }
 
 async function cloneChildren(
@@ -100,7 +106,7 @@ export async function cloneNode(
     return Promise.resolve(null)
   }
   return Promise.resolve(nativeNode)
-    .then(cloneSingleNode)
+    .then(cloneSingleNode, isRoot)
     .then((clonedNode) => cloneChildren(nativeNode, clonedNode, filter))
     .then((clonedNode) => decorate(nativeNode, clonedNode))
 }
