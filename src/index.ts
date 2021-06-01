@@ -103,7 +103,10 @@ export async function toSvg(
     .then((clonedNode) => embedWebFonts(clonedNode!, options))
     .then((clonedNode) => embedImages(clonedNode, options))
     .then((clonedNode) => applyStyleWithOptions(clonedNode, options))
-    .then((clonedNode) => createSvgDataURL(clonedNode, width, height))
+    .then((clonedNode) => {
+      console.log(clonedNode);
+      return createSvgDataURL(clonedNode, width, height)
+    })
 }
 
 export const toSvgDataURL = toSvg
