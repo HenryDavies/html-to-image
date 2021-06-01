@@ -96,6 +96,7 @@ export async function cloneNode(
   filter?: Function,
   isRoot?: boolean,
 ): Promise<HTMLElement | null> {
+  console.log('cloning node', nativeNode);
   if (!isRoot && filter && !filter(nativeNode)) {
     return Promise.resolve(null)
   }
