@@ -106,7 +106,7 @@ export async function cloneNode(
     return Promise.resolve(null)
   }
   return Promise.resolve(nativeNode)
-    .then(cloneSingleNode, isRoot || false)
+    .then((node) => cloneSingleNode(node, isRoot || false))
     .then((clonedNode) => cloneChildren(nativeNode, clonedNode, filter))
     .then((clonedNode) => decorate(nativeNode, clonedNode))
 }
